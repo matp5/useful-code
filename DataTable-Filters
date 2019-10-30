@@ -1,6 +1,6 @@
-Sortowanie tabeli LIVE
+Sortowanie tabeli LIVE PRZYKŁAD
 
-
+JQUERY !! !! ! !
 $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
         var area_min = parseInt( $('#area-min').val(), 10 );
@@ -87,3 +87,14 @@ $( ".slider-range" ).slider({
 	        
 		}
     } );
+
+ !! ! ! ! HTML
+				<div class="filters-slide mb-5">
+					<h3>Powierzchnia mieszkania: <span class="pow_min">20m2</span> - <span class="pow_max">100m2</span></h3>
+					<div class="slider-range"></div>
+					<input type="hidden" id="area-min" placeholder="od">
+					<input type="hidden" id="area-max" placeholder="do">
+				</div>
+				<div id="select-filters">
+
+				</div>
