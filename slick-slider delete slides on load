@@ -1,0 +1,7 @@
+.stick-img:not(.slick-initialized) .CLASS {
+    display: none;
+}
+
+.stick-img:not(.slick-initialized) .CLASS:first-child {
+    display: block;
+}
