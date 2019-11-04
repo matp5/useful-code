@@ -98,3 +98,51 @@ $( ".slider-range" ).slider({
 				<div id="select-filters">
 
 				</div>
+				
+				
+				
+				//// sortowanie checkboxami
+				
+					<div class="checkbox-filters text-center">
+					<div> <span class='d-block filters-headline'>Piętro: </span>
+						<label class="cont">1 <input class='floor' type="checkbox" name="floor" value="1"><span class='checkmark'></span></label>
+						<label class="cont">2 <input class='floor' type="checkbox" name="floor" value="2"><span class='checkmark'></span></label>
+						<label class="cont">3 <input class='floor' type="checkbox" name="floor" value="3"><span class='checkmark'></span></label>
+						<label class="cont">4 <input class='floor' type="checkbox" name="floor" value="4"><span class='checkmark'></span></label>
+					</div>
+					<div> <span class='d-block filters-headline'>Ilość pokoi: </span>
+						<label class='cont'>1<input class='rooms' type="checkbox" name="room" value="1"><span class='checkmark'></span></label>
+						<label class='cont'>2<input class='rooms' type="checkbox" name="room" value="2"><span class='checkmark'></span></label>
+						<label class='cont'>3<input class='rooms' type="checkbox" name="room" value="3"><span class='checkmark'></span></label>
+						<label class='cont'>4<input class='rooms' type="checkbox" name="room" value="4"><span class='checkmark'></span></label>
+					</div>
+					<div class='d-flex flex-column align-items-center'> <span class='d-block filters-headline'>Status: </span>
+						<label class='cont'>Wolne<input class='stats' type="checkbox" name="stats" value="Wolne"><span class='checkmark'></span></label>
+						<label class='cont'>Zarezerwowane<input class='stats' type="checkbox" name="stats" value="Zarezerwowane"><span class='checkmark'></span></label>
+						<label class='cont'>Sprzedane<input class='stats' type="checkbox" name="stats" value="Sprzedane"><span class='checkmark'></span></label>
+					</div>
+				</div>
+				
+  otable = $('#tabela-mieszkan').dataTable();
+
+$('input.floor').on('change', function() {
+  var floor = $('input:checkbox[name="floor"]:checked').map(function() {
+    return '^' + this.value + '\$';
+  }).get().join('|');
+  otable.fnFilter(floor, 1, true, false, false, false);
+});
+
+$('input.rooms').on('change', function() {
+  var types = $('input:checkbox[name="room"]:checked').map(function() {
+    return '^' + this.value + '\$';
+  }).get().join('|');
+  otable.fnFilter(types, 2, true, false, false, false);
+});
+
+$('input.stats').on('change', function() {
+  var status = $('input:checkbox[name="stats"]:checked').map(function() {
+    return '^' + this.value + '\$';
+  }).get().join('|');
+  otable.fnFilter(status, 4, true, false, false, false);
+});
+				
