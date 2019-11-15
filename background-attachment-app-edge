@@ -1,0 +1,11 @@
+
+
+	if (/Edge\/\d./i.test(navigator.userAgent)){
+	   $('.main-baner').css('background-attachment', 'scroll');
+	}
+	if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+	    $('.main-baner').css('background-attachment', 'scroll');
+	};
+	if(navigator.vendor.startsWith('Apple')) {
+		$('.main-baner').css('background-attachment', 'scroll');
+	}
