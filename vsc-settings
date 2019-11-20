@@ -1,0 +1,7 @@
+semicolon/srednik "css.completion.completePropertyWithSemicolon": false,
+
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "editor.formatOnSave": true,
