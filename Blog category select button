@@ -25,7 +25,20 @@
                 
                 
                 
-                
+#cat {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 10px 15px 10px 10px;
+    outline: none;
+    cursor: pointer;
+    background-image: url('../images/down-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    background-size: 12px;
+    transition: .2s;
+    width: 240px;
+}
                 
                 
                 
