@@ -1,11 +1,11 @@
 <div id="categories" class='col-12'>
-                <form id="category-select2" class="category-select2" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+                <form id="category-select" class="category-select" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
 
                     <?php $terms = get_terms( 'category' ); ?>
-                    <div class="custom-select2">
+                    <div class="custom-select">
 
-                    <select name="cat-aktualnosci" id="cat-aktualnosci">
-                        <option value="aktualnosci">Wszystkie aktualności</option>
+                    <select name="cat" id="cat">
+                        <option value="blog">All categories</option>
                         <?php foreach ($terms as $term) {
                             if($queried_object->slug == $term->slug){
                             echo '<option selected value="'.$term->slug.'">'.$term->name.'</option>';
@@ -22,3 +22,26 @@
                     </noscript>
                 </form>
                 </div>
+                
+                
+                
+                
+                
+                
+                
+                
+$('#category-select').submit(function(e) {
+	e.preventDefault();
+	filter();
+});
+$('#cat').on('change', function() {
+	filter();
+});
+function filter() {
+	var cat = $('#cat').val();
+	if(cat == 'blog'){
+		window.location.href = "/blog";
+	}else{
+		window.location.href = "/category/"+cat;
+	}
+}
