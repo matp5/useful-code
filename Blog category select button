@@ -1,0 +1,24 @@
+<div id="categories" class='col-12'>
+                <form id="category-select2" class="category-select2" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+
+                    <?php $terms = get_terms( 'category' ); ?>
+                    <div class="custom-select2">
+
+                    <select name="cat-aktualnosci" id="cat-aktualnosci">
+                        <option value="aktualnosci">Wszystkie aktualności</option>
+                        <?php foreach ($terms as $term) {
+                            if($queried_object->slug == $term->slug){
+                            echo '<option selected value="'.$term->slug.'">'.$term->name.'</option>';
+                            }else{
+                            echo '<option value="'.$term->slug.'">'.$term->name.'</option>';
+                            }
+                            
+                        } ?>
+                    </select>
+                    </div>
+
+                    <noscript>
+                        <input type="submit" value="View" />
+                    </noscript>
+                </form>
+                </div>
