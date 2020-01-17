@@ -1,0 +1,18 @@
+
+<!-- load isotope: -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+<!-- activate isotope: -->
+<script>
+jQuery(function($){
+   // remove some default classes from the blocks gallery (your classes might be different):
+   $('.wp-block-gallery').removeClass("columns-3");
+   // set style for layout of the items:
+   $('.blocks-gallery-item').css({"width":"33%", "margin":0, "padding":0});
+   // activate isotope:
+   $('.wp-block-gallery').isotope({
+      itemSelector: '.blocks-gallery-item', layoutMode: 'masonry'
+   });
+   $('.blocks-gallery-item').css({"width":"33%", "margin":0, "padding":0});
+   $('.blocks-gallery-item img').css({"padding":"5px"});
+});
+</script>
