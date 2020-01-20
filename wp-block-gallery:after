@@ -1,3 +1,13 @@
+.blocks-gallery-grid {
+  content: "";
+  -webkit-box-flex: 999999999;
+  -ms-flex-positive: 999999999;
+  flex-grow: 999999999;
+}
+
+lub:
+
+
 .wp-block-gallery:after {
   content: "";
   -webkit-box-flex: 999999999;
