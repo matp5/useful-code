@@ -1,0 +1,70 @@
+
+.closed .vertical {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(-90deg);
+}
+.closed .horizontal {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(-90deg);
+  opacity: 1;
+}
+.circle-plus.opened {
+  opacity: 1;
+}
+.circle-plus.opened .vertical {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(90deg);
+}
+.circle-plus.opened .horizontal {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(90deg);
+  opacity: 0;
+}
+.circle-plus {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.circle-plus .circle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: solid 1px #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle-plus .circle:before {
+  content: '';
+  height: 1px;
+  background: #d9d9d9;
+  width: 700px;
+  position: absolute;
+  right: 60px;
+}
+.circle-plus .circle .horizontal {
+  position: absolute;
+  background-color: #000;
+  width: 16px;
+  height: 2px;
+}
+.circle-plus .circle .vertical {
+  position: absolute;
+  background-color: #000;
+  width: 2px;
+  height: 16px;
+}
+
+<div class="circle-plus closed">
+    <div class="circle">
+        <div class="horizontal"></div>
+        <div class="vertical"></div>
+    </div>
+</div>
+
+
+$('.circle-plus').on('click', function(){
+  $(this).toggleClass('opened');
+})
+
