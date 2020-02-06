@@ -1,4 +1,4 @@
-.blocks-gallery-grid {
+.blocks-gallery-grid:after {
   content: "";
   -webkit-box-flex: 999999999;
   -ms-flex-positive: 999999999;
