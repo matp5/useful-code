@@ -1,0 +1,76 @@
+<div class="popup-chat" id='popup-chat'>
+    <div class="popup-content text-center">
+        <span class="closeMe">X</span>
+        <div class="popup-form">
+            <span>Wyślij wiadomość</span>
+            miejsce na formularz
+        </div>
+    </div>
+</div>
+
+
+
+.closeMe {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.popup-chat {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    background-color: rgba(255,255,255,0.5);
+}
+
+@-webkit-keyframes forpopup {
+    0%   {opacity:0; top:-100px;}
+    100% {opacity:1; top: 50%;}
+}
+@keyframes forpopup {
+    0%   {opacity:0; top:-100px;}
+    100% {opacity:1; top: 50%;}
+}
+
+.popup-chat .popup-content {
+    display: block;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 80vh;
+    overflow: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 700px;
+    max-width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+    color: #777;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 0 20px 2px rgba(0,0,0, 0.1);
+    animation-name: forpopup;
+    animation-duration: 0.3s;
+}
+
+.popup-form form span,
+.popup-form form input,
+.popup-form form textarea{
+    width: 100%;
+    margin: 5px 0;
+    resize: none;
+}
+
+.popup-form .wpcf7-textarea,
+.popup-form .wpcf7-text {
+    border: 1px solid #e1e1e1;
+    padding: 10px 15px;
+}
