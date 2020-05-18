@@ -1,0 +1,3 @@
+$('.slick-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+		$('.slick-slider [data-slick-index="' + currentSlide + '"]').fadeTo('fast',0);
+	});
