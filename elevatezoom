@@ -1,0 +1,57 @@
+<div id="gallery_01" class="row row-margin offset-top isotope ">
+            <?php foreach( $images as $i=>$image ): ?>
+                <div class="lg25 md33 sm50 iso-one">
+                    <div class="lg100">
+                        <a data-image="<?php echo wp_get_attachment_image_src($image['ID'], 'large')[0]; ?>" data-zoom-image="<?php echo wp_get_attachment_image_src($image['ID'], 'full')[0]; ?>" class="zoomIt gallerybox zoomple <?php if($i == 0){echo 'active';} ?>" href="#wizki">
+                            <!-- <?php echo wp_get_attachment_image( $image['ID'], $size ); ?> -->
+                            <img id="zoom_01" src="<?php echo wp_get_attachment_image_src($image['ID'], 'medium')[0]; ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+<script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
+
+(function($) {
+$(document).ready(function() {
+
+var zoomw = $('.zoomimgwidth').width();
+
+setTimeout(function() {
+
+        $("#zoom_01").ezPlus({
+            gallery: 'gallery_01', 
+            cursor: 'pointer', 
+            galleryActiveClass: 'active',
+            zoomWindowWidth: zoomw,
+            mantainZoomAspectRatio: true,
+            responsive: true,
+            borderSize: 0,
+            imageCrossfade: true,
+            scrollZoom: true
+        });
+
+},1000);
+
+
+$('.zoomple').on('click', function() {
+    $('html, body').animate({ scrollTop: $('#wizki').offset().top}, 500);
+    //setTimeout( function() { $('.zoomWrapper').css({ "height" :  $('.zoomWrapper img').height()+"px" }); },700);
+});
+
+
+});
+})(jQuery);
+<style type="text/css">
+.zoomWindowContainer .zoomWindow{
+    margin-left: 30px;
+}
+.zoomWrapper img{
+    /*height: auto !important;*/
+    width: auto !important;
+}
+.zoomWrapper{
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+</style>
