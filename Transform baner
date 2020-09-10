@@ -1,0 +1,5 @@
+	$(window).scroll(function () {
+		$('.baner').css({'transform':'translate3d(0px, '+(-($(this).scrollTop()/5))+"px"+', 0px'});
+	});
+  
+  
