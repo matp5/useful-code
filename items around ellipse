@@ -1,0 +1,28 @@
+
+	function fac() {
+		drawEllipse($('.fac__item'), -80, 300, 240,400, 90);
+    
+		function drawEllipse(selector, x, y, a, b, angle) {
+			var steps = $(selector).length;
+			var i = 0;
+			var beta = -angle * (Math.PI / 180);
+			var sinbeta = Math.sin(beta);
+			var cosbeta = Math.cos(beta);
+
+			$(selector).each(function(index) {
+				var alpha = i * (Math.PI / 180);
+				i += (360 / steps);
+				var sinalpha = Math.sin(alpha);
+				var cosalpha = Math.cos(alpha);
+				var X = x + (a * sinalpha * cosbeta - b * cosalpha * sinbeta);
+				var Y = y - (a * sinalpha * sinbeta + b * cosalpha * cosbeta);
+				X = Math.floor(X);
+				Y = Math.floor(Y);
+
+				//again, here's where the important X and Y coordinates are being output
+				$(this).css('top', Y + 'px');
+				$(this).css('left', X + 'px');
+			});
+		}
+	}
+	fac();
