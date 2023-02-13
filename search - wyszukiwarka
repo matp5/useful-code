@@ -1,0 +1,25 @@
+$('#price-search').on('keyup', function() {
+	$('#price-search').on('keyup', function() {
+		var inputValue = $(this).val().toLowerCase();
+	
+		$('.pricing__box').each(function() {
+		  var boxFound = false;
+		  $(this).find('.pricing__item').each(function() {
+			var itemName = $(this).find('.pricing__name').text().toLowerCase();
+	
+			if (itemName.indexOf(inputValue) >= 0) {
+			  boxFound = true;
+			  $(this).show();
+			} else {
+			  $(this).hide();
+			}
+		  });
+	
+		  if (boxFound) {
+			$(this).show();
+		  } else {
+			$(this).hide();
+		  }
+		});
+	  });
+});
