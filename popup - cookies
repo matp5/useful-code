@@ -1,0 +1,35 @@
+
+		function popup() {
+			var popupShown = false;
+			var popupCookie = Cookies.get('pops');
+			if (popupCookie !== undefined && popupCookie == 'true') {
+			  popupShown = true;
+			}
+		  
+			if (!popupShown) {
+			$('body').addClass('pop-active');
+			  setTimeout(function() {
+				$('.pops').fadeIn(500);
+			  }, 2000);
+		  
+			  $('.pops__close').on('click', function() {
+				$('body').removeClass('pop-active');
+				$('.pops').fadeOut(500);
+		  
+				Cookies.set('pops', 'true', { expires: 10 / (2 * 24 * 60), path: '/' });
+			  });
+			  $(".pops, .pops__items").click(function(e) {
+				if (!$(e.target).is(".pops__items")) {
+					$('body').removeClass('pop-active');
+					$('.pops').fadeOut(500);
+				}
+			  });
+			}
+			// usunięcie kodu, który ustawia ciasteczko po 10 minutach
+			// oraz zmiana warunku decydującego o wyświetleniu okna
+			else if (popupShown && $('.pops').is(':visible')) {
+			  $('.pops').fadeOut(500);
+			}
+		  }
+		  
+		  popup();
