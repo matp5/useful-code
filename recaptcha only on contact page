@@ -1,3 +1,16 @@
+function block_recaptcha_badge() {
+  if ( !is_page( array( 'contact-us' ) ) ) {
+    wp_dequeue_script( 'google-recaptcha' );
+    wp_deregister_script( 'google-recaptcha' );
+    add_filter( 'wpcf7_load_js', '__return_false' );
+    add_filter( 'wpcf7_load_css', '__return_false' );
+  }
+}
+add_action( 'wp_print_scripts', 'block_recaptcha_badge' );
+
+
+
+//old
 add_action('wp_print_scripts', function () {  
 	//Add pages you want to allow to array
 	if ( !is_page( array( 'contact','kontakt' ) ) ){
