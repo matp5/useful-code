@@ -1,0 +1,44 @@
+	function opinionsVideo() {
+			$(window).on('load', function() {
+				if ($(window).width() > 991 && $('.ops__video').length) {
+					var videoLink = $('.ops__video video').attr('data-item');
+					
+					$('.ops__video video source').attr('src', videoLink);
+					
+					$('.ops__video video')[0].load();
+				}
+			});
+		} opinionsVideo();
+		function banerVideo() {
+			$(window).on('load', function() {
+				if ($(window).width() > 991 && $('.baner__video').length) {
+				var videoLink = $('.baner__video video').attr('data-desktop');
+				
+				$('.baner__video video source').attr('src', videoLink);
+				
+				$('.baner__video video')[0].load();
+			} else {
+				var videoLink = $('.baner__video video').attr('data-mobile');
+				
+				$('.baner__video video source').attr('src', videoLink);
+				
+				$('.baner__video video')[0].load();
+			}
+			});
+		} banerVideo();
+
+		$(window).scroll(function() {
+			var windowTop = $(window).scrollTop();
+			var windowBottom = windowTop + $(window).height();
+		  
+			$('.vid').each(function() {
+			  var elemTop = $(this).offset().top;
+			  var elemBottom = elemTop + $(this).height();
+		  
+			  if ((elemTop <= windowBottom) && (elemBottom >= windowTop)) {
+				$(this).get(0).play();
+			  } else {
+				$(this).get(0).pause();
+			  }
+			});
+		  });
