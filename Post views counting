@@ -1,0 +1,52 @@
+// Funkcja do zarejestrowania pola meta 'views' dla postów typu 'oferta'
+function register_views_meta_field() {
+    register_post_meta('oferta', 'views', array(
+        'type' => 'integer',
+        'single' => true,
+        'default' => 0,
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_views_meta_field');
+
+// Funkcja do zliczania wyświetleń posta
+function count_post_views($post_id) {
+    $views = get_post_meta($post_id, 'views', true);
+    $views = $views ? intval($views) + 1 : 1;
+    update_post_meta($post_id, 'views', $views);
+}
+
+// Hook do zliczania wyświetleń podczas wyświetlania pojedynczego posta
+add_action('wp_head', function () {
+    if (is_single() && get_post_type() === 'oferta') {
+        count_post_views(get_the_ID());
+    }
+});
+
+
+
+<?php
+$args = array(
+    'post_type' => 'oferta',
+    'posts_per_page' => 3,
+    'meta_key' => 'views', // Sortuj według pola meta 'views'
+    'orderby' => 'meta_value_num',
+    'order' => 'DESC',
+);
+
+$oferta_posts = get_posts($args);
+$c = 0;
+
+foreach ($oferta_posts as $post) {
+    $post_id = $post->ID;
+    $views = get_post_meta($post_id, 'views', true); 
+    $c += 150;
+
+    ?>
+    <li class="c-100 c-md-33" data-aos='fade-up' data-aos-duration="1100" data-aos-delay="<?php echo $c; ?>">
+        <?php echo $icon_plus; echo $views; ?>
+        <a href="<?php the_permalink($post_id); ?>" title="<?php echo esc_attr(get_the_title($post_id)); ?>">
+            <span><?php echo esc_html(get_the_title($post_id)); ?></span>
+        </a>
+    </li>
+<?php } wp_reset_postdata(); ?>
